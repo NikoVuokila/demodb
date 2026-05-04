@@ -28,7 +28,7 @@ cursor.execute("""
 data = []
 base_time = datetime.now()
 
-# This part created random data
+# # This part created random data
 # for i in range(20):
 #     speed_kmh = round(random.uniform(0, 140), 2)
 #     recorded_at = base_time - timedelta(minutes=i * 5)
