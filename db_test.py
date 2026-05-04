@@ -28,17 +28,17 @@ cursor.execute("""
 data = []
 base_time = datetime.now()
 
-# # This part created random data
-# for i in range(20):
-#     speed_kmh = round(random.uniform(0, 140), 2)
-#     recorded_at = base_time - timedelta(minutes=i * 5)
-#     data.append((speed_kmh, recorded_at))
+# This part created random data
+for i in range(20):
+    speed_kmh = round(random.uniform(0, 140), 2)
+    recorded_at = base_time - timedelta(minutes=i * 5)
+    data.append((speed_kmh, recorded_at))
 
-# cursor.executemany("""
-#     INSERT INTO speed_sensor (speed_kmh, recorded_at)
-#     VALUES (%s, %s)
-# """, data)
-# conn.commit()
+cursor.executemany("""
+    INSERT INTO speed_sensor (speed_kmh, recorded_at)
+    VALUES (%s, %s)
+""", data)
+conn.commit()
 
 cursor.execute("SELECT speed_kmh, recorded_at FROM speed_sensor ORDER BY recorded_at")
 rows = cursor.fetchall()
